@@ -5,6 +5,28 @@ import random
 
 RPS = ["rock", "paper", "scissors"]
 end_flag = False
+p1score = 0
+p2score = 0
+
+player1_choice = ''
+player2_choice = ''
+
+def solve(choice):
+	global p1score, p2score
+	if player2_choice == choice:
+		print("DRAW")
+	elif choice == RPS[0] and player2_choice != RPS[1]:
+		print("Player 1 WINS!")
+		p1score += 1
+	elif choice == RPS[1] and player2_choice != RPS[2]:
+		print("Player 1 WINS!")
+		p1score += 1
+	elif choice == RPS[2] and player2_choice != RPS[0]:
+		print("Player 1 WINS!")
+		p1score += 1
+	else:
+		print("Player 2 WINS!")
+		p2score += 1
 
 print("...Rock...")
 print("...Paper...")
@@ -34,27 +56,35 @@ while end_flag == False:
 
 	player2_choice = player2_choice.lower()
 
-	if player1_choice == player2_choice:
-		print("DRAW")
-	elif player1_choice == "rock":
-		if player2_choice == "scissors":
-			print("Player 1 WINS!")
-		elif player2_choice == "paper":
-			print("Player 2 WINS!")
-	elif player1_choice == "paper":
-		if player2_choice == "rock":
-			print("Player 1 WINS!")
-		elif player2_choice == "scissors":
-			print("Player 2 WINS!")
-	elif player1_choice == "scissors":
-		if player2_choice == "paper":
-			print("Player 1 WINS!")
-		elif player2_choice == "rock":
-			print("Player 1 WINS!")
-	else:
-		print("Something went wrong.")
+	solve(player1_choice)
+	# if player1_choice == player2_choice:
+	# 	print("DRAW")
+	# elif player1_choice == "rock":
+	# 	if player2_choice == "scissors":
+	# 		print("Player 1 WINS!")
+	# 		p1score += 1
+	# 	elif player2_choice == "paper":
+	# 		print("Player 2 WINS!")
+	# 		p2score += 1
+	# elif player1_choice == "paper":
+	# 	if player2_choice == "rock":
+	# 		print("Player 1 WINS!")
+	# 		p1score += 1
+	# 	elif player2_choice == "scissors":
+	# 		print("Player 2 WINS!")
+	# 		p2score += 1
+	# elif player1_choice == "scissors":
+	# 	if player2_choice == "paper":
+	# 		print("Player 1 WINS!")
+	# 		p1score += 1
+	# 	elif player2_choice == "rock":
+	# 		print("Player 2 WINS!")
+	# 		p2score += 1
+	# else:
+	# 	print("Something went wrong.")
 
-	continue_choice = input("\n\nWould you like to play again? ")
+	print(f"\n\n-Scores p1:[{p1score}] p2:[{p2score}]-")
+	continue_choice = input("Would you like to play again? (y/n) ")
 	if continue_choice[0].lower() == "y":
 		continue
 	else:
